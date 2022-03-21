@@ -24,6 +24,15 @@ public class UsuarioBean {
     private String confirmarSenha;
     private String senhaMD5;
     private List<Usuario> lista;
+    private String cargo;
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
     public List<Usuario> getLista() {
         if(this.lista == null){
@@ -86,6 +95,11 @@ public class UsuarioBean {
         } else {
             String senhaAleatoria = DigestUtils.md5DigestAsHex(senha.getBytes());
             this.usuario.setSenha(senhaAleatoria);
+        }
+        
+        this.usuario.getPermissao().add(cargo);
+        if(cargo.equals("HOLE_ADMINISTRADOR")){
+            this.usuario.getPermissao().add("ROLE_USUARIO");
         }
         
         UsuarioRN usuarioRN = new UsuarioRN();

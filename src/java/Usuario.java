@@ -38,6 +38,7 @@ public class Usuario implements  Serializable{
    private Date nascimento;
    private String celular;
    private boolean ativo;
+
    
    @ElementCollection(targetClass = String.class)
    @JoinTable(
@@ -120,6 +121,7 @@ public class Usuario implements  Serializable{
     public void setPermissao(Set<String> permissao) {
         this.permissao = permissao;
     }
+    
 
     @Override
     public int hashCode() {
@@ -151,6 +153,7 @@ public class Usuario implements  Serializable{
         if (this.ativo != other.ativo) {
             return false;
         }
+        
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
